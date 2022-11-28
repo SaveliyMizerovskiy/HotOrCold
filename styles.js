@@ -1,10 +1,10 @@
 function intialize(){
-    let number = Math.floor(Math.random() * 100);
-    let guess = 50;
+    number = Math.floor(Math.random() * 100);
+    guess = 50;
     guesses = 5;
     current = document.getElementById("currentGuess");
-    hotOrCold = document.getElementById("hotOrCold");
-    counter = document.getElementById("counter");
+    var hotOrCold = document.getElementById("hotOrCold");
+    var counter = document.getElementById("counter");
     console.log(number);
     display();
 }
@@ -12,7 +12,7 @@ function intialize(){
 function add(num){
     if (guesses > 0){
         guess += num;
-        if (guess > 100){
+        if (guess >= 100){
             guess = 100;
         }
         guesses --;
@@ -24,7 +24,7 @@ function add(num){
 function subtract(num){
     if (guesses > 0){
         guess -= num;
-        if (guess < 0){
+        if (guess <= 0){
             guess = 0;
         }
         guesses --;
@@ -51,14 +51,14 @@ function temp(){
     } else if (Math.abs(number - guess) <= 55){
         return 'Cold';
     } else if (Math.abs(number - guess) > 55){
-        return 'Very Cold'
+        return 'Very Cold';
     } 
 }
 
 function display(){
     current.innerHTML = guess;
     counter.innerHTML = guesses;
-    if (guesses < 5){
+    if (guesses <= 5){
         hotOrCold.innerHTML = temp();
     }
 }
